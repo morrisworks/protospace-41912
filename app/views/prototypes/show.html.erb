@@ -46,16 +46,19 @@
         <% else %>
               <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
         <% end %>
-        <% @comments.each do |comment| %>
-          <ul class="comments_lists">
-            <%# 投稿に紐づくコメントを一覧する処理を記述する %>
+        <%  if @comments.present?  %>
+          <% @comments.each do |comment| %>
+            <ul class="comments_lists">
+              <%# 投稿に紐づくコメントを一覧する処理を記述する %>
               <li class="comments_list">
                 <%= comment.content %>
                 <%= link_to comment.user.name, user_path(comment.user.id), class: :comment_user %>
               </li>
-            <%# // 投稿に紐づくコメントを一覧する処理を記述する %>
-          </ul>
+              <%# // 投稿に紐づくコメントを一覧する処理を記述する %>
+            </ul>
+          <% end %>
         <% end %>
+
       </div>
     </div>
   </div>
